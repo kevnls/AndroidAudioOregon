@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">Audio Oregon</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_about">About</string>
+    <string name="title_activity_main">Audio Oregon</string>
+    <string name="title_activity_about">About</string>
+    <string name="hello_about">Hello about!</string>
+
+</resources>
