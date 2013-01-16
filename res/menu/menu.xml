@@ -3,4 +3,8 @@
         android:title="@string/menu_about"
         android:orderInCategory="100"
         android:showAsAction="never" />
+    <item android:id="@+id/menu_list"
+        android:title="List"
+        android:orderInCategory="99"
+        android:showAsAction="never" />
 </menu>

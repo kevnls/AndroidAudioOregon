@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name="AboutActivity" android:label="@string/title_activity_about"></activity>
+        <activity android:name="ListByCategoryActivity" android:label="List"></activity>
     </application>
 
 </manifest>

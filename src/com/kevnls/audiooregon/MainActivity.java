@@ -29,6 +29,9 @@ public class MainActivity extends Activity {
 		case R.id.menu_about:
 			startActivity(new Intent(this, AboutActivity.class));
 			break;
+		case R.id.menu_list:
+			startActivity(new Intent(this, ListByCategoryActivity.class));
+			break;
 		}	
 		return true;
 	}
