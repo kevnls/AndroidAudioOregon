@@ -87,7 +87,6 @@ public class HelperUtilities {
 
 			long rowId = db.insert("items", null, dbMap);
 			
-			// If the insert succeeded, the row ID exists.
 	        if (rowId == -1) {
 	        	throw new SQLException("Failed to insert row");
 	        }
@@ -117,26 +116,29 @@ public class HelperUtilities {
 				"DROP TABLE IF EXISTS " + TABLE + ";";
 		private static final String TABLE_CREATE =
 				"CREATE TABLE " + TABLE + " (" +
-						"id INTEGER PRIMARY KEY, " +
-						"category TEXT, " +
-						"title TEXT, " +
-						"description TEXT, " +
-						"latitude TEXT, " +
-						"longitude TEXT, " +
-						"image_file_path TEXT, " +
-						"audio_file_path TEXT);";
+				"id INTEGER PRIMARY KEY, " +
+				"category TEXT, " +
+				"title TEXT, " +
+				"description TEXT, " +
+				"latitude TEXT, " +
+				"longitude TEXT, " +
+				"image_file_path TEXT, " +
+				"audio_file_path TEXT);";
 
 		public DatabaseHelper(Context context) {
+			
 			super(context, DATABASE, null, VERSION);
 		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
+			
 			db.execSQL(TABLE_CREATE);
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			
 			db.execSQL(TABLE_DROP);
 			db.execSQL(TABLE_CREATE);
 		} 

@@ -2,54 +2,62 @@ package com.kevnls.audiooregon;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ListActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //this could be used to update data asynchronously
-        //new UpdateData().execute();
-    }
+        new CreateList().execute();
+    } 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+    	
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
     
     @Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    	
 		switch (item.getItemId()) {
+		case R.id.menu_update:
+			startActivity(new Intent(this, UpdateDataActivity.class));
+			break;
 		case R.id.menu_about:
 			startActivity(new Intent(this, AboutActivity.class));
-			break;
-		case R.id.menu_list:
-			startActivity(new Intent(this, ListByCategoryActivity.class));
 			break;
 		}	
 		return true;
 	}
+    
+	private class CreateList extends AsyncTask<Void, Integer, Cursor> {
 
-	class UpdateData extends AsyncTask<String, Integer, String> {
+		protected Cursor doInBackground(Void... params) {
 
-		@Override
-		protected String doInBackground(String... params) {
-			//what to do asynchronously
-			return null;
+			HelperUtilities hu = new HelperUtilities();
+			return hu.GetRecordItemsFromDB(null, MainActivity.this);
 		}
 
-		@Override
-		protected void onPostExecute(String result) {
-			//callback function
-			//the result variable is the return of the doInBackground function
-			super.onPostExecute(result);
+		protected void onPostExecute(Cursor cursor) {
+
+			String[] fromColumns = { "title", "description", "image_file_path" };
+			int[] toViews = { R.id.listTitle, R.id.listDescription, R.id.listImage };
+
+			RecentItemsCursorAdapter adapter = new RecentItemsCursorAdapter(
+					MainActivity.this, 0,
+					cursor, fromColumns, toViews, 0);
+
+			ListView listView = getListView();
+			listView.setAdapter(adapter);
 		}
-    	
-    }
+	}
 }

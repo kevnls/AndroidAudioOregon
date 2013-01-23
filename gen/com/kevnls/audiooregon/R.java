@@ -19,24 +19,28 @@ public final class R {
         public static final int listImage=0x7f070001;
         public static final int listTitle=0x7f070002;
         public static final int listView1=0x7f070000;
-        public static final int menu_about=0x7f070004;
-        public static final int menu_list=0x7f070005;
+        public static final int menu_about=0x7f070005;
+        public static final int menu_update=0x7f070004;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int list_view_template=0x7f030002;
+        public static final int activity_update=0x7f030002;
+        public static final int recent_items_large_template=0x7f030003;
+        public static final int recent_items_small_template=0x7f030004;
     }
     public static final class menu {
         public static final int menu=0x7f060000;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
-        public static final int hello_about=0x7f040005;
-        public static final int hello_world=0x7f040001;
+        public static final int hello_about=0x7f040007;
+        public static final int hello_update=0x7f040006;
         public static final int menu_about=0x7f040002;
-        public static final int title_activity_about=0x7f040004;
+        public static final int menu_update=0x7f040001;
+        public static final int title_activity_about=0x7f040005;
         public static final int title_activity_main=0x7f040003;
+        public static final int title_activity_update=0x7f040004;
     }
     public static final class style {
         public static final int AppTheme=0x7f050000;
