@@ -31,6 +31,7 @@ public class MainActivity extends ListActivity {
 		switch (item.getItemId()) {
 		case R.id.menu_update:
 			startActivity(new Intent(this, UpdateDataActivity.class));
+			finish();
 			break;
 		case R.id.menu_about:
 			startActivity(new Intent(this, AboutActivity.class));

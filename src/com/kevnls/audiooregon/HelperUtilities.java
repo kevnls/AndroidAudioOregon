@@ -1,20 +1,25 @@
 package com.kevnls.audiooregon;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -62,34 +67,21 @@ public class HelperUtilities {
 		}
 		return items;
 	}
-
-	public void RefreshLocalData(Context context) {
-
-		ArrayList<RecordItem> records = GetRecordItemsFromRestService();
-
-		DatabaseHelper dbHelper = new DatabaseHelper(context);
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
+	
+	public void SaveRemoteFile(Context context, String url, String fileName, String fileDirectory) {
 		
-		db.delete("items", null, null);
-
-		for (RecordItem item : records) {
-
-			ContentValues dbMap = new ContentValues();
-
-			dbMap.put("id", item.getId());
-			dbMap.put("category", item.getCategory());
-			dbMap.put("title", item.getTitle());
-			dbMap.put("description", item.getDescription());
-			dbMap.put("latitude", item.getLatitude());
-			dbMap.put("longitude", item.getLongitude());
-			dbMap.put("image_file_path", item.getImageFilename());
-			dbMap.put("audio_file_path", item.getAudioFilename());
-
-			long rowId = db.insert("items", null, dbMap);
-			
-	        if (rowId == -1) {
-	        	throw new SQLException("Failed to insert row");
-	        }
+		try {
+			new DefaultHttpClient().execute(new HttpGet(url))
+			.getEntity().writeTo(new FileOutputStream(new File(fileDirectory, fileName)));
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

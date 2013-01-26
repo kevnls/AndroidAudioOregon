@@ -6,7 +6,7 @@
     <string name="title_activity_main">Audio Oregon</string>
     <string name="title_activity_update">Update Data</string>
     <string name="title_activity_about">About</string>
-    <string name="hello_update">Put a progress indicator here!</string>
+    <string name="progress_update">updating local data...</string>
     <string name="hello_about">This is what it is all about.</string>
 
 </resources>
