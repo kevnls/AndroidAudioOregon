@@ -20,10 +20,10 @@ public class RecentItemsCursorAdapter extends SimpleCursorAdapter {
 	      int row = cursor.getPosition();
 	      LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	      
-	      if (row == 0 || ((row + 1) % 5) == 0 || (row % 5) == 0){
-	           return inflater.inflate(R.layout.recent_items_large_template, null);
+	      if (row == 0 || ((row + 1) % 4) == 0 || (row % 5) == 0){
+	           return inflater.inflate(R.layout.list_items_large_template, null);
 	      } else {
-	    	  return inflater.inflate(R.layout.recent_items_small_template, null);
+	    	  return inflater.inflate(R.layout.list_items_small_template, null);
 	      }
 	 }
 }

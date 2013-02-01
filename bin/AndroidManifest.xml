@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="com.kevnls.audiooregon.UpdateDataActivity" android:label="@string/title_activity_update"></activity>
         <activity android:name="com.kevnls.audiooregon.AboutActivity" android:label="@string/title_activity_about"></activity>
+        <activity android:name="com.kevnls.audiooregon.DetailActivity" android:label="@string/title_activity_detail"></activity>
     </application>
 
 </manifest>

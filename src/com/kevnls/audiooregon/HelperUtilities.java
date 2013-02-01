@@ -98,6 +98,16 @@ public class HelperUtilities {
 		
 		return items;
 	}
+	
+	public Cursor GetCategoriesFromDB(Context context) {
+		
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+		
+		Cursor items = db.rawQuery("SELECT DISTINCT category FROM items", null);
+		
+		return items;
+	}
 
 	public class DatabaseHelper extends SQLiteOpenHelper {
 

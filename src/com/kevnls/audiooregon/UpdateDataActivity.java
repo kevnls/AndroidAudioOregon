@@ -34,7 +34,6 @@ public class UpdateDataActivity extends Activity {
 			//get records from REST service
 			ArrayList<RecordItem> records = hu.GetRecordItemsFromRestService();
 			
-			//this tells me the max size of the progress indicator
 			//I'm tacking-on 2 because I'll update progress after each delete operation too
 			maxProgress = records.size() + 2;
 			progressBar = (ProgressBar)findViewById(R.id.updateProgressBar);
@@ -42,7 +41,7 @@ public class UpdateDataActivity extends Activity {
 			int progress = 0;
 
 			HelperUtilities.DatabaseHelper dbHelper = hu.new DatabaseHelper(UpdateDataActivity.this);
-			SQLiteDatabase db = dbHelper.getWritableDatabase();
+			SQLiteDatabase db = dbHelper.getWritableDatabase(); 
 		
 			File contextDirectory = new File(UpdateDataActivity.this.getFilesDir().toString());
 			String fileDirectory = contextDirectory.toString() + "/";
@@ -55,8 +54,7 @@ public class UpdateDataActivity extends Activity {
 			//delete all local files
 			File[] files = contextDirectory.listFiles();
 			
-			for (File file : files)
-			{
+			for (File file : files) {
 				file.delete();
 			}
 			progress +=1;
@@ -67,13 +65,11 @@ public class UpdateDataActivity extends Activity {
 				ContentValues dbMap = new ContentValues();
 				
 				//save local files
-				if (item.getImageFilename() != "null")
-				{
+				if (item.getImageFilename() != "null") {
 					hu.SaveRemoteFile(UpdateDataActivity.this, item.getImageFilename(), item.getId() + ".jpg", fileDirectory);
 				}
 				
-				if (item.getAudioFilename() != "null")
-				{
+				if (item.getAudioFilename() != "null") {
 					hu.SaveRemoteFile(UpdateDataActivity.this, item.getAudioFilename(), item.getId() + ".mp3", fileDirectory);
 				}
 

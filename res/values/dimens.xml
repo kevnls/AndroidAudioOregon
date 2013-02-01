@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="ProgressBarMargins">20px</dimen>
+    <dimen name="ProgressBarMargins">40px</dimen>
 </resources>
