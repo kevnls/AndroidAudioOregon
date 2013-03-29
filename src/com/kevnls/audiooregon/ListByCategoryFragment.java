@@ -23,10 +23,8 @@ public class ListByCategoryFragment extends ListFragment {
 
 		super.onListItemClick(l, v, position, id);
 		
-		//TODO this probably isn't looking for the right thing
-		//String clickedId = ((TextView)v.findViewById(R.id.categoryList)).getText().toString();
-		ListFragment listFragment = (ListFragment)getFragmentManager().findFragmentById(R.id.categoryList);
-		String clickedId = ((TextView)listFragment.getView()).getText().toString();
+		Cursor rowCursor = (Cursor)this.getListView().getItemAtPosition(position);
+		String clickedId = rowCursor.getString(1);
 	    
 	    Intent intent = new Intent(ListByCategoryFragment.this.getActivity(), DetailActivity.class);
 	    intent.putExtra("id", clickedId);
