@@ -18,6 +18,7 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
+        public static final int categoryList=0x7f080003;
         public static final int detailDescription=0x7f080002;
         public static final int detailImage=0x7f080000;
         public static final int detailTitle=0x7f080001;
@@ -25,7 +26,6 @@ public final class R {
         public static final int listId=0x7f080009;
         public static final int listImage=0x7f080006;
         public static final int listTitle=0x7f080007;
-        public static final int listView1=0x7f080003;
         public static final int menu_about=0x7f08000b;
         public static final int menu_update=0x7f08000a;
         public static final int textView1=0x7f080005;

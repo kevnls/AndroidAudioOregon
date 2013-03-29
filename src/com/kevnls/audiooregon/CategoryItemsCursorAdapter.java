@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class RecentItemsCursorAdapter extends SimpleCursorAdapter {
+public class CategoryItemsCursorAdapter extends SimpleCursorAdapter {
 
-	public RecentItemsCursorAdapter(Context context, int layout, Cursor c,
+	public CategoryItemsCursorAdapter(Context context, int layout, Cursor c,
 			String[] from, int[] to, int flags) {
 		super(context, layout, c, from, to, flags);
 	}
