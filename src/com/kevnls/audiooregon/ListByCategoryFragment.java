@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class ListByCategoryFragment extends ListFragment {
 	
@@ -23,8 +22,8 @@ public class ListByCategoryFragment extends ListFragment {
 
 		super.onListItemClick(l, v, position, id);
 		
-		Cursor rowCursor = (Cursor)this.getListView().getItemAtPosition(position);
-		String clickedId = rowCursor.getString(1);
+		Cursor cursor = (Cursor)this.getListView().getItemAtPosition(position);
+		String clickedId = cursor.getString(1);
 	    
 	    Intent intent = new Intent(ListByCategoryFragment.this.getActivity(), DetailActivity.class);
 	    intent.putExtra("id", clickedId);
